@@ -1,9 +1,39 @@
 "use client"
-import React from 'react'
+import React, { useEffect ,useState } from 'react'
 import { ImgCard } from '.'
+import { database } from '@/utils/firebase'
+import { getDocs } from "firebase/firestore";
+
+
+interface ImageData {
+  date:string;
+  name: string;
+  imageUrl: string;
+}
 
 const Working = ({selectedImage}:any) => {
-    
+
+  const [imageFiles, setImageFiles] = useState<ImageData[]>([]);
+  const [effect, seteffect] = useState<ImageData[]>([])
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const querySnapshot = await getDocs(database.images);
+        var fetchedImageFiles = querySnapshot.docs.map(doc => doc.data());
+        setImageFiles(fetchedImageFiles);
+        seteffect(fetchedImageFiles);
+      } catch (error) {
+        console.error("Error fetching image data:", error);
+      }
+    };
+  
+    fetchData();
+    // seteffect(selectedImage.imageUrl)
+  }, [effect]);
+  
+
     
   return (
     <div>
@@ -21,10 +51,11 @@ const Working = ({selectedImage}:any) => {
         </div>
 
     <div className='imgcard'>
-        <ImgCard />
-        <ImgCard />
-        <ImgCard />
+    {imageFiles.map((e, index) => (
+    <ImgCard key={index} element={e} />
+  ))}
     </div>
+
     </div>
   )
 }
