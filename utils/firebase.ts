@@ -17,12 +17,15 @@ const firebaseConfig = {
   };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const firestore = getFirestore(app);
+let firestore = null;
+
+if (typeof window !== 'undefined') {
+  const app = initializeApp(firebaseConfig);
+  firestore = getFirestore(app);
+}
 
 export const database = {
-  images: collection(firestore, 'imageData') // Use the collection function from the Firestore module
+  images: firestore ? collection(firestore, 'imageData') : null
 };
 
 
