@@ -12,7 +12,7 @@ type YourComponentProps = {
 
 const Data = ({selectedImage,setSelectedImage}:YourComponentProps) => {
 
-    // const [data, setdata] = useState({});
+    const [imageUrl, setImageUrl] = useState("");
     const [name, setName] = useState("");
     // const [selectedImage, setSelectedImage] = useState<File | null>(null);
 
@@ -22,7 +22,6 @@ const Data = ({selectedImage,setSelectedImage}:YourComponentProps) => {
         'January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December'
       ];
-      
       const today: Date = new Date();
       const currentDay: number = today.getDate();
       const currentMonth: string = months[today.getMonth()];
@@ -30,11 +29,37 @@ const Data = ({selectedImage,setSelectedImage}:YourComponentProps) => {
       const formattedDate: string = `${currentDay} ${currentMonth}`;
       
       console.log(`Today's Date: ${formattedDate}`);
+      
+      const uploadData = new FormData()
+      uploadData.append('file', selectedImage as Blob)
+      uploadData.append("upload_preset","imageupload")
+      uploadData.append("cloud_name","dbum1emnc")
+     
+
+      try {
+        const response = await fetch('https://api.cloudinary.com/v1_1/dbum1emnc/image/upload', {
+          method: "post",
+          body: uploadData,
+        });
+      
+        if (!response.ok) {
+          throw new Error("Image upload failed");
+        }
+      
+        const data = await response.json();
+        var image_Url = data.secure_url;
+        console.log(image_Url);
+        setImageUrl(image_Url);
+      } catch (err) {
+        console.log(err);
+      }
+        
+
       try {
         // Insert data into Firestore
         const docRef = await addDoc(database.images, {
           name,
-          imageUrl: URL.createObjectURL(selectedImage), // Assuming you have the image URL here
+          imageUrl: image_Url, // Assuming you have the image URL here
           date: formattedDate,
           createdAt: serverTimestamp()
         });
