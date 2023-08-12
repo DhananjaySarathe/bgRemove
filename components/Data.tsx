@@ -1,9 +1,64 @@
 "use client"
-import React from 'react'
+import React, { ChangeEvent,useState } from 'react'
 import { Input } from '@chakra-ui/react'
+import { database } from '@/utils/firebase'
 import { Button, ButtonGroup } from '@chakra-ui/react'
+import { addDoc, serverTimestamp } from "firebase/firestore"; // Import additional Firestore functions
 
-const Data = () => {
+type YourComponentProps = {
+    selectedImage: File | null;
+    setSelectedImage: (image: File | null ) => void;
+  };
+
+const Data = ({selectedImage,setSelectedImage}:YourComponentProps) => {
+
+    // const [data, setdata] = useState({});
+    const [name, setName] = useState("");
+    // const [selectedImage, setSelectedImage] = useState<File | null>(null);
+
+
+    async function updateAll(){
+      const months: string[] = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+      ];
+      
+      const today: Date = new Date();
+      const currentDay: number = today.getDate();
+      const currentMonth: string = months[today.getMonth()];
+      
+      const formattedDate: string = `${currentDay} ${currentMonth}`;
+      
+      console.log(`Today's Date: ${formattedDate}`);
+      try {
+        // Insert data into Firestore
+        const docRef = await addDoc(database.images, {
+          name,
+          imageUrl: URL.createObjectURL(selectedImage), // Assuming you have the image URL here
+          date: formattedDate,
+          createdAt: serverTimestamp()
+        });
+    
+        console.log("Document written with ID: ", docRef.id);
+      } catch (error) {
+        console.error("Error adding document: ", error);
+      }
+      
+    }
+
+    function handleImageChange(e: ChangeEvent<HTMLInputElement>) {
+        const imageFile = e.target.files?.[0]; //proceedonly when there is some file.
+        if (imageFile) {
+          setSelectedImage(imageFile);
+        }
+      }
+      
+
+    function updateName(e:ChangeEvent<HTMLInputElement>){
+        // console.log(e)
+        setName(e.target.value);
+    }
+
   return (
     <div className='datain'>
         <div className='dataup'>
@@ -13,12 +68,18 @@ const Data = () => {
 
         <div className='inp'>
             <p className='tgray font2'>Step 1</p>
-            <Input placeholder='Your Project name' />
+            <Input placeholder='Your Project name' onChange={updateName} autoComplete='off' name='name' />
         </div>
         
         <div className='inp'>
             <p className='tgray font2'>Step 2</p>
-            <Input placeholder='Upload Product image' />
+            {/* <Input placeholder='Upload Product image' type='file' name="imageUpload" /> */}
+            <label className="file-input-label">
+  <span className="upload-icon">📁</span>
+  Upload Image
+  <input className="file-input" type="file" name="imageUpload"onChange={handleImageChange}  accept="image/*"/>
+    </label>
+
         </div>
 
         <div className='inp'>
@@ -31,7 +92,7 @@ const Data = () => {
         </div>
 
         <div className='inp'>
-        <Button className='btn' colorScheme='purple'>Create new project</Button>
+        <Button className='btn' onClick={updateAll} colorScheme='purple'>Create new project</Button>
         </div>
 
     </div>

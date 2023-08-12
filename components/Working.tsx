@@ -1,7 +1,10 @@
+"use client"
 import React from 'react'
 import { ImgCard } from '.'
 
-const Working = () => {
+const Working = ({selectedImage}:any) => {
+    
+    
   return (
     <div>
         <div className='workingup'>
@@ -10,16 +13,18 @@ const Working = () => {
         </div>
 
         <div className='imgCont'>
-            <img src="/img.png" alt="image" className='bgimage' />
+            {selectedImage?(
+                <img className="bgImg" src={URL.createObjectURL(selectedImage)} alt="image" />
+                ):(
+                    <img src="/img.png" alt="image" className='bgImg2' />
+            )}
         </div>
 
     <div className='imgcard'>
         <ImgCard />
         <ImgCard />
         <ImgCard />
-
     </div>
-
     </div>
   )
 }

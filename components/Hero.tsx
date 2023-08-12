@@ -1,7 +1,11 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
 import { Data, Working } from '.'
 
 const Hero = () => {
+
+    const [selectedImage, setSelectedImage] = useState<File | null>(null);
+
   return (
     <div className='hero'>
         <div className='sidebar'>
@@ -20,13 +24,13 @@ const Hero = () => {
 
 {/* DataSection */}
         <div className='data'>
-            <Data />
+            <Data selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
         </div>
 
 
     {/* Working Section */}
     <div className='working'>
-            <Working />  
+        <Working selectedImage={selectedImage}/>  
     {/* uploadedPics */}   
     </div>
 
