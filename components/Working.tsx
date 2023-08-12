@@ -11,28 +11,22 @@ interface ImageData {
   imageUrl: string;
 }
 
-const Working = ({selectedImage}:any) => {
+const Working = ({selectedImage,effect}:any) => {
 
   const [imageFiles, setImageFiles] = useState<ImageData[]>([]);
-  const [effect, seteffect] = useState<ImageData[]>([])
-
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const querySnapshot = await getDocs(database.images);
-        var fetchedImageFiles = querySnapshot.docs.map(doc => doc.data());
+        const fetchedImageFiles = querySnapshot.docs.map(doc => doc.data());
         setImageFiles(fetchedImageFiles);
-        seteffect(fetchedImageFiles);
       } catch (error) {
         console.error("Error fetching image data:", error);
       }
     };
-  
     fetchData();
-    // seteffect(selectedImage.imageUrl)
   }, [effect]);
-  
 
     
   return (

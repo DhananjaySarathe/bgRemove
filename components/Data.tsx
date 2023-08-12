@@ -8,9 +8,11 @@ import { addDoc, serverTimestamp } from "firebase/firestore"; // Import addition
 type YourComponentProps = {
     selectedImage: File | null;
     setSelectedImage: (image: File | null ) => void;
+    effect:number;
+    seteffect: (value: React.SetStateAction<number>) => void;
   };
 
-const Data = ({selectedImage,setSelectedImage}:YourComponentProps) => {
+const Data = ({selectedImage,setSelectedImage,effect,seteffect}:YourComponentProps) => {
 
     const [imageUrl, setImageUrl] = useState("");
     const [name, setName] = useState("");
@@ -49,6 +51,8 @@ const Data = ({selectedImage,setSelectedImage}:YourComponentProps) => {
         const data = await response.json();
         var image_Url = data.secure_url;
         console.log(image_Url);
+        effect++;
+        seteffect(effect+1);
         setImageUrl(image_Url);
       } catch (err) {
         console.log(err);

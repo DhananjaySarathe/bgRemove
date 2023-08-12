@@ -7,15 +7,14 @@ import { getFirestore, collection } from "firebase/firestore"; // Import the nec
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyCmDhc3S3NfQQN3On6tGYRPxcTEMEFKgbU",
-    authDomain: "imagedata-d5bd0.firebaseapp.com",
-    projectId: "imagedata-d5bd0",
-    storageBucket: "imagedata-d5bd0.appspot.com",
-    messagingSenderId: "143849225139",
-    appId: "1:143849225139:web:1f204bd89cb1e4355fa9c6",
-    // measurementId: "G-HKM3XGMC1R"
-  };
-
+  apiKey: "AIzaSyAteo240DFSDgswifBeByMzH0pVYvtOz9E",
+  authDomain: "imagedb-cccd8.firebaseapp.com",
+  projectId: "imagedb-cccd8",
+  storageBucket: "imagedb-cccd8.appspot.com",
+  messagingSenderId: "129897957886",
+  appId: "1:129897957886:web:e7d154f1ea99cc938598af",
+  measurementId: "G-70C1S1K2XQ"
+};
 // Initialize Firebase
 let firestore = null;
 

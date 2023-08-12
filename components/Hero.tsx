@@ -5,6 +5,7 @@ import { Data, Working } from '.'
 const Hero = () => {
 
     const [selectedImage, setSelectedImage] = useState<File | null>(null);
+    const [effect, seteffect] = useState(0)
 
   return (
     <div className='hero'>
@@ -24,13 +25,13 @@ const Hero = () => {
 
 {/* DataSection */}
         <div className='data'>
-            <Data selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
+            <Data selectedImage={selectedImage} setSelectedImage={setSelectedImage} effect={effect} seteffect={seteffect}/>
         </div>
 
 
     {/* Working Section */}
     <div className='working'>
-        <Working selectedImage={selectedImage}/>  
+        <Working selectedImage={selectedImage} effect={effect}/>  
     {/* uploadedPics */}   
     </div>
 
