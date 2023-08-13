@@ -38,7 +38,7 @@ const Working = ({selectedImage,effect}:any) => {
 
         <div className='imgCont pl'>
             {selectedImage?(
-                <img className="bgImg" src={URL.createObjectURL(selectedImage)} alt="image" />
+                <img className="bgImg"  src={URL.createObjectURL(selectedImage)} alt="image" />
                 ):(
                     <img src="/img.png" alt="image" className='bgImg2' />
             )}

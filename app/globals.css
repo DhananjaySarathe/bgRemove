@@ -306,6 +306,10 @@ line-height: 24px; /* 150% */
   margin-bottom: 19px !important;
 }
 
+.imgCont img{
+  border-top-width: 4px;
+}
+
 .bgImg{
   border-radius: 5px;
   border: 2px solid var(--primary-color-palettes-neutral-neutral-100, #F3F4F6);
