@@ -5,6 +5,7 @@ import { Select } from '@chakra-ui/react'
 const Header = () => {
   return (
     <div className='header'>
+
         <div className="logo">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M8.28333 0.00333602H2.84C2.08333 0.00333602 1.37 0.300003 0.833334 0.833336C0.296667 1.36667 0 2.08667 0 2.84334V8.28667H3.10667V3.11334H8.28L8.28333 0.00333602Z" fill="url(#paint0_linear_1_55)"/>
@@ -24,28 +25,32 @@ const Header = () => {
 <stop offset="1" stop-color="#E063E6"/>
 </linearGradient>
 </defs>
-</svg>
+      </svg>
         <div className='title'>
         <h3>Your Projects</h3>
         </div>
         </div>
 
         <div className='headend'>
-            <div> <span className='tgray'>Photos left:</span> 960 </div>
-            <div> <span className='tgray zoom'>Zoom level</span> </div>
-            <div className='optns'>
-            <Select placeholder='90%'>
+            <div className='head_data'> <span className='tgray'>Photos left:</span> 960 </div>
+            <div className='optns1'>
+            <div className='head_data head_data-2'> <span className='tgray zoom'>Zoom level</span> </div>
+              <div className='optn'>
+            <Select  size="sm"  placeholder='90%'  border="none" iconSize={15} >
   <option value='option1'>1</option>
   <option value='option2'>2</option>
   <option value='option3'>3</option>
 </Select>
+              </div>
             </div>
-         <div className='optns'>
-         <Select placeholder='Nitin M'>
+         <div className='optns2'>
+          <div className='optn'>
+         <Select className='optn' size="sm" _hover="off" placeholder='Nitin M' border="none" iconSize={15}>
   <option value='option1'>1</option>
   <option value='option2'>2</option>
   <option value='option3'>3</option>
-</Select>
+</Select>   
+          </div>
          </div>
         </div>
 

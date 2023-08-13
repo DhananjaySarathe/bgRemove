@@ -30,13 +30,13 @@ const Working = ({selectedImage,effect}:any) => {
 
     
   return (
-    <div>
-        <div className='workingup'>
+    <div className='workingup'>
+        <div className='pl pt'>
         <h2>Your recent projects</h2>
         <p className='tgray font2'>Select and browse your project image and start experimenting</p>
         </div>
 
-        <div className='imgCont'>
+        <div className='imgCont pl'>
             {selectedImage?(
                 <img className="bgImg" src={URL.createObjectURL(selectedImage)} alt="image" />
                 ):(
@@ -44,7 +44,7 @@ const Working = ({selectedImage,effect}:any) => {
             )}
         </div>
 
-    <div className='imgcard'>
+    <div className='imgcard pl'>
     {imageFiles.map((e, index) => (
     <ImgCard key={index} element={e} />
   ))}
