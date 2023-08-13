@@ -44,9 +44,9 @@ const Working = ({selectedImage,effect}:any) => {
             )}
         </div>
 
-    <div className='imgcard pl'>
+    <div className='imgcard '>
     {imageFiles.map((e, index) => (
-    <ImgCard key={index} element={e} />
+    <ImgCard  key={index}  element={e} />
   ))}
     </div>
 

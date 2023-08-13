@@ -104,7 +104,7 @@ const Data = ({selectedImage,setSelectedImage,effect,seteffect}:YourComponentPro
     <p className='tgray font2'>Step 2</p>
     <label className="custom-file-label">
         Upload Product Image
-        <input className="file-input" type="file" name="imageUpload" onChange={handleImageChange} accept="image/*"/>
+        <input className="file-input" placeholder='Upload Product Image' type="file" name="imageUpload" onChange={handleImageChange} accept="image/*"/>
     </label>
 </div>
 

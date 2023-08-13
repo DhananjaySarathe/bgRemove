@@ -36,20 +36,47 @@ const Header = () => {
             <div className='optns1'>
             <div className='head_data head_data-2'> <span className='tgray zoom'>Zoom level</span> </div>
               <div className='optn'>
-            <Select  size="sm"  placeholder='90%' _hover="off"  border="none" iconSize={14} >
-  <option value='option1'>1</option>
-  <option value='option2'>2</option>
-  <option value='option3'>3</option>
-</Select>
+              <Select
+      size="sm"
+      placeholder='90%'
+      _hover="off"
+      border="none"
+      iconSize={14}
+      css={{
+        '&:focus, &:active': {
+          boxShadow: 'none', // Remove focus and active box-shadow
+          borderColor: 'transparent', // Remove border color on focus and active
+        },
+      }}
+    >
+      <option value='option1'>1</option>
+      <option value='option2'>2</option>
+      <option value='option3'>3</option>
+    </Select>
               </div>
             </div>
+        
+        
          <div className='optns2'>
           {/* <div className='optn namedown'> */}
-         <Select className='optn placeholder' size="sm" _hover="off" placeholder='Nitin M' border="none" iconSize={14}>
-  <option value='option1'>1</option>
-  <option value='option2'>2</option>
-  <option value='option3'>3</option>
-</Select>   
+          <Select
+        className='optn placeholder'
+        size="sm"
+        _hover="off"
+        placeholder='Nitin M'
+        border="none"
+        iconSize={14}
+        css={{
+          '&:focus, &:active': {
+            boxShadow: 'none', // Remove focus and active box-shadow
+            borderColor: 'transparent', // Remove border color on focus and active
+          },
+        }}
+      >
+        <option value='option1'>1</option>
+        <option value='option2'>2</option>
+        <option value='option3'>3</option>
+      </Select>
           {/* </div> */}
          </div>
         </div>

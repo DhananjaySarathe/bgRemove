@@ -7,7 +7,7 @@ const ImgCard = ({element}) => {
 
   return (
     <>
-        <Card maxW='xs' height={220} width={218} className='chakraCard'>
+        <Card maxW='xs' height={220}  width={218} className='chakraCard'>
   <CardBody pt={0} px={0} border="0px" >
     <Image mt={3} height={32} width="100%" px={4}
       src={element.imageUrl}
